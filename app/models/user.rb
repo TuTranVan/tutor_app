@@ -11,7 +11,7 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  enum role: {lock: 0, admin: 1, tutor: 2, student: 3}
+  enum role: {close: 0, admin: 1, tutor: 2, student: 3}
 
   has_secure_password
 

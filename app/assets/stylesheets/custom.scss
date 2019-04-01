@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
 html, body {
   margin: 0;
@@ -144,3 +145,137 @@ footer{
   background: white;
 }
 /*--//footer --*/
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+/* login */
+.form-control {
+  min-height: 41px;
+  background: #fff;
+  border-color: #e3e3e3;
+  box-shadow: none !important;
+  border-radius: 4px;
+}
+.form-control:focus {
+  border-color: #99c432;
+}
+.login-form {
+  width: 40%;
+  margin: 0 auto;
+  padding: 30px 0 30px;
+}
+.login-form form {
+  color: #999;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #fff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  position: relative;
+  background-color:#f2dede;
+}
+.login-form h2 {
+  font-size: 24px;
+  color: #454959;
+  margin: 45px 0 25px;
+  font-family: 'Francois One', sans-serif;
+  }
+.login-form .avatar {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -50px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #ffffff;
+  padding: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.login-form .avatar img {
+  width: 100%;
+}
+.login-form .btn {
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
+}
+.login-btn {
+  font-size: 16px;
+  font-weight: bold;
+  background: #df4930;
+  margin-bottom: 20px;
+}
+.login-btn:hover, .login-btn:active {
+  background: #86ac2d !important;
+}
+.social-btn {
+  padding-bottom: 15px;
+}
+.social-btn .btn {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.social-btn .btn:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+.social-btn .btn-primary {
+  background: #507cc0;
+}
+.social-btn .btn-info {
+  background: #64ccf1;
+}
+.social-btn .btn-danger {
+  background: #df4930;
+}
+.social-btn .btn i {
+  margin: 1px 10px 0 5px;
+  min-width: 20px;
+  font-size: 18px;
+}
+.or-seperator {
+  height: 0;
+  margin: 0 auto 20px;
+  text-align: center;
+  width: 30%;
+}
+.or-seperator span {
+  font-size: 85%;
+  padding: 0 10px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: -13px;
+  z-index: 1;
+}
+.login-form a {
+  color: #fff;
+}
+.login-form form a {
+  color: #999;
+  text-decoration: none;
+}
+.login-form a:hover, .login-form form a:hover {
+  text-decoration: none;
+}
+.login-form form a:hover {
+  color: black;
+}
