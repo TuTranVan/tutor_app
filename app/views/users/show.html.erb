@@ -1,3 +1,4 @@
+<% provide(:title, @user.name) %>
 <% if @user.admin? %>
   <%= @user.email %>
 <% end %>
@@ -7,5 +8,5 @@
 <% end %>
 
 <% if @user.tutor? %>
-  <%= render @user.student %>
+  <%= render @user.tutor %>
 <% end %>

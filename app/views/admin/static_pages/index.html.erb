@@ -1,6 +1,9 @@
+<% provide(:title, "Admin") %>
 <div class="row">
   <div class="col-md-2">
     <%= render "layouts/nav" %>
   </div>
-  <div class="col-md-10"><%= current_user.name %></div>
+  <div class="col-md-10 content-admin">
+    <%= current_user.name %>
+  </div>
 </div>

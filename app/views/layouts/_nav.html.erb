@@ -1,5 +1,16 @@
-<ul>
-  <li>
-    <%= link_to "Người dùng",admin_users_path, class: "nav-link cool" %>
-  </li>
-</ul>
+<div class="nav-admin">
+  <ul class="navbar-nav">
+    <div class="nav-item">
+      <i class="fa fa-home"></i>
+      <%= link_to "Dashboard",admin_root_path, class: "nav-link cool color-item" %>
+    </div>
+    <div class="nav-item">
+      <i class="fa fa-users"></i>
+      <%= link_to "Người dùng",admin_users_path, class: "nav-link cool color-item" %>
+    </div>
+     <div class="nav-item">
+      <i class="fa fa-book"></i>
+      <%= link_to "Môn học","#", class: "nav-link cool color-item" %>
+    </div>
+  </ul>
+</div>
