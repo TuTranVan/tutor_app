@@ -1,4 +1,6 @@
 class Tutor < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   belongs_to :user
   has_many :certificates, dependent: :destroy
   has_many :majors, dependent: :destroy
