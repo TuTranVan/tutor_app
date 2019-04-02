@@ -1,0 +1,11 @@
+<% if @user.admin? %>
+  <%= @user.name %>
+<% end %>
+
+<% if @user.student? %>
+  <%= render @user.student %>
+<% end %>
+
+<% if @user.tutor? %>
+  <%= render @user.student %>
+<% end %>

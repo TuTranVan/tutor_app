@@ -35,7 +35,7 @@
                 Tài khoản<b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Hồ sơ của bạn", "#" %></li>
+                <li><%= link_to "Hồ sơ của bạn", current_user %></li>
                 <li><%= link_to "Cập nhật thông tin", "#" %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Đăng xuất", logout_path, method: :delete %></li>
