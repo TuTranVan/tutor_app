@@ -9,7 +9,6 @@ class Tutor < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :posts, dependent: :destroy
 
-  validates :name, presence: true
   validates :gender, presence: true
   validates :dob, presence: true
   validates :phone, presence: true

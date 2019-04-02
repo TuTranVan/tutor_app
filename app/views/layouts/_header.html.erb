@@ -12,13 +12,13 @@
             <%= link_to "TRANG CHỦ",root_path, class: "nav-link cool" %>
           </li>
           <li class="nav-item">
-            <%= link_to "GIA SƯ",root_path, class: "nav-link cool" %>
+            <%= link_to "GIA SƯ",tutor_path, class: "nav-link cool" %>
           </li>
           <li class="nav-item">
-            <%= link_to "HỌC SINH",root_path, class: "nav-link cool" %>
+            <%= link_to "HỌC SINH",student_path, class: "nav-link cool" %>
           </li>
           <li class="nav-item">
-            <%= link_to "PHỤ HUYNH",root_path, class: "nav-link cool" %>
+            <%= link_to "PHỤ HUYNH",parent_path, class: "nav-link cool" %>
           </li>
           <li class="nav-item">
             <%= link_to "LỚP HIỆN CÓ",root_path, class: "nav-link cool" %>
@@ -27,12 +27,12 @@
             <%= link_to "DANH SÁCH GIA SƯ",root_path, class: "nav-link cool" %>
           </li>
           <li class="nav-item">
-            <%= link_to "VỀ CHÚNG TÔI",root_path, class: "nav-link cool" %>
+            <%= link_to "VỀ CHÚNG TÔI",about_path, class: "nav-link cool" %>
           </li>
           <% if logged_in? %>
             <li class="dropdown nav-item">
               <a href="#" class="dropdown-toggle nav-link cool" data-toggle="dropdown">
-                Tài khoản<b class="caret"></b>
+                <%= current_user.name %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Hồ sơ của bạn", current_user %></li>
@@ -41,6 +41,11 @@
                 <li><%= link_to "Đăng xuất", logout_path, method: :delete %></li>
               </ul>
             </li>
+            <% if current_user.admin? %>
+              <li class="nav-item">
+                <%= link_to "Admin",admin_root_path, class: "nav-link cool" %>
+              </li>
+            <% end %>
           <% else %>
             <li class="nav-item">
               <%= link_to login_path, class: "nav-link cool" do %>

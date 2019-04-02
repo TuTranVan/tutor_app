@@ -22,3 +22,7 @@ en:
         phone: "Điện thoại di động"
         address: "Địa chỉ"
         literacy: "Trình độ học vấn"
+  user_role:
+    admin: "Admin"
+    tutor: "Gia sư"
+    student: "Học sinh"

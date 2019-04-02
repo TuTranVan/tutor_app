@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20190328133410) do
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
     t.string "gender"
     t.date "dob"
     t.string "phone"
@@ -109,7 +108,6 @@ ActiveRecord::Schema.define(version: 20190328133410) do
   end
 
   create_table "tutors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
     t.string "gender"
     t.date "dob"
     t.string "phone"
@@ -124,6 +122,7 @@ ActiveRecord::Schema.define(version: 20190328133410) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.integer "role", default: 0
