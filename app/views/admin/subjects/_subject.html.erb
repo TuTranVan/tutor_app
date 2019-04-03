@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= link_to edit_admin_subject_path(subject), class: "btn btn-primary" do %>
+      <em class="fa fa-pencil"></em>
+    <% end %>
+    <%= link_to admin_subject_path(subject), method: :delete, class: "btn btn-danger",
+      data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+      <em class="fa fa-trash"></em>
+    <% end %>
+  </td>
+  <td><%= subject.name %></td>
+</tr>

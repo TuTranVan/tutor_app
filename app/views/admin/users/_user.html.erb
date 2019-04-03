@@ -1,14 +1,15 @@
 <tr>
-  <td align="center">
-    <%= link_to "#", class: "btn btn-default" do %>
+  <td>
+    <%= link_to edit_admin_user_path(user), class: "btn btn-primary" do %>
       <em class="fa fa-pencil"></em>
     <% end %>
-    <%= link_to "#", method: :delete, class: "btn btn-danger",
-      data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
-      <em class="fa fa-trash"></em>
+    <% if !current_user?(user) %>
+      <%= link_to admin_user_path(user), method: :delete, class: "btn btn-danger",
+        data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+        <em class="fa fa-trash"></em>
+      <% end %>
     <% end %>
   </td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
-  <td><%= t "user_role.#{user.role}" %></td>
 </tr>
