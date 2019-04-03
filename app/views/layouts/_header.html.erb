@@ -35,17 +35,16 @@
                 <%= current_user.name %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Hồ sơ của bạn", current_user %></li>
+                <% if current_user.admin? %>
+                  <li><%= link_to "Quản trị hệ thống",admin_root_path %></li>
+                <% else %>
+                  <li><%= link_to "Hồ sơ của bạn", current_user %></li>
+                <% end %>
                 <li><%= link_to "Cập nhật thông tin", "#" %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Đăng xuất", logout_path, method: :delete %></li>
               </ul>
             </li>
-            <% if current_user.admin? %>
-              <li class="nav-item">
-                <%= link_to "Admin",admin_root_path, class: "nav-link cool" %>
-              </li>
-            <% end %>
           <% else %>
             <li class="nav-item">
               <%= link_to login_path, class: "nav-link cool" do %>

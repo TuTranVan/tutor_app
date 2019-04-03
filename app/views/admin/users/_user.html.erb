@@ -1,5 +1,13 @@
 <tr>
-  <td></td>
+  <td align="center">
+    <%= link_to "#", class: "btn btn-default" do %>
+      <em class="fa fa-pencil"></em>
+    <% end %>
+    <%= link_to "#", method: :delete, class: "btn btn-danger",
+      data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+      <em class="fa fa-trash"></em>
+    <% end %>
+  </td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
   <td><%= t "user_role.#{user.role}" %></td>

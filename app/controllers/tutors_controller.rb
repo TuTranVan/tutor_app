@@ -8,7 +8,7 @@ class TutorsController < ApplicationController
     @tutor = Tutor.new tutor_params
     if @tutor.save
       flash[:success] = "Bạn đã đăng ký thành công"
-      redirect_to root_path
+      redirect_to @tutor.user
     else
       render :new
     end

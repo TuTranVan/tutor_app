@@ -23,12 +23,17 @@
       <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Nhập lại mật khẩu" %>
     </div>
 
-    <div class="form-group">
-      <%= f.radio_button :role, "tutor", checked: true %>
-      <%= f.label :role, "Gia sư", value: "tutor" %>
-      <%= f.radio_button :role, "student" %>
-      <%= f.label :role, "Học sinh", value: "student" %>
+    <div class="row form-group">
+      <div class="col-md-3 col-md-offset-3">
+        <%= f.radio_button :role, "tutor" %>
+        <%= f.label :role, "Gia sư", value: "tutor" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.radio_button :role, "student" %>
+        <%= f.label :role, "Học sinh", value: "student" %>
+      </div>
     </div>
+
     <div class="form-group">
       <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-block login-btn" %>
     </div>

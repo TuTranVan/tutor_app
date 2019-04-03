@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
       flash[:success] = "Bạn đã đăng nhập thành công"
       log_in user
-      redirect_to root_path
+      redirect_to user
     else
       flash.now[:danger] = "Đăng nhập thất bại"
       render :new

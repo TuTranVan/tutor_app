@@ -5,7 +5,7 @@
     <div class="avatar">
       <%= image_tag("logo.png") %>
     </div>
-    <h2 class="text-center">NHẬP THÔNG TIN CÁ NHÂN</h2>
+    <h2 class="text-center">CẬP NHẬP THÔNG TIN CÁ NHÂN</h2>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
 
@@ -21,16 +21,20 @@
       <%= f.date_field :dob, class: "form-control" %>
     </div>
 
-    <div class="form-group">
-      <%= f.radio_button :gender, "Nam", checked: true %>
-      <%= f.label :gender, "Nam", value: "Nam", class: "control-label" %>
-      <%= f.radio_button :gender, "Nữ", class: "control-label" %>
-      <%= f.label :gender, "Nữ", value: "Nữ" %>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <%= f.radio_button :gender, "Nam" %>
+        <%= f.label :gender, "Nam", value: "Nam" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.radio_button :gender, "Nữ" %>
+        <%= f.label :gender, "Nữ", value: "Nữ" %>
+      </div>
     </div>
 
     <div class="form-group">
       <%= f.label :literacy, class: "control-label" %>
-      <%= f.select:literacy, options_for_tutor, class: "form-control" %>
+      <%= f.select :literacy, options_for_tutor, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :introduce, class: "control-label" %>
@@ -41,6 +45,7 @@
       <%= f.label :avatar, class: "control-label" %>
       <%= f.file_field :avatar, class: "form-control" %>
     </div>
+
     <div class="form-group">
       <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-block login-btn" %>
     </div>
