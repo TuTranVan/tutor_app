@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= link_to "#", class: "btn btn-primary" do %>
+    <%= link_to admin_tutor_path(tutor), class: "btn btn-primary" do %>
       <em class="fa fa-eye"></em>
     <% end %>
     <%= link_to admin_user_path(tutor.user), method: :delete, class: "btn btn-danger",

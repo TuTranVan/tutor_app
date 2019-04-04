@@ -10,7 +10,7 @@ class Admin::TutorsController < AdminController
   private
 
   def load_tutor
-    @tutor = User.find_by id: params[:id]
+    @tutor = Tutor.find_by id: params[:id]
     return if @tutor
     redirect_to admin_tutors_path
   end
