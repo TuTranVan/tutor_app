@@ -1,0 +1,17 @@
+<tr>
+  <td>
+    <%= link_to admin_student_path(student), class: "btn btn-primary" do %>
+      <em class="fa fa-eye"></em>
+    <% end %>
+    <%= link_to admin_user_path(student.user), method: :delete, class: "btn btn-danger",
+      data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+      <em class="fa fa-trash"></em>
+    <% end %>
+  </td>
+  <td><%= student.user.name %></td>
+  <td><%= student.dob %></td>
+  <td><%= student.gender %></td>
+  <td><%= student.phone %></td>
+  <td><%= student.address %></td>
+  <td><%= student.literacy %></td>
+</tr>
