@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, :load_user, :correct_user, only: %i(show)
 
-  def show; end
+  def show
+    if @user.student?
+      redirect_to @user.student
+    elsif @user.tutor?
+      redirect_to @user.tutor
+    end
+  end
 
   def new
     @user = User.new

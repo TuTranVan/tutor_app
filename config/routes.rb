@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
-  get "/tutor", to: "static_pages#tutor"
-  get "/student", to: "static_pages#student"
-  get "/parent", to: "static_pages#parent"
+  get "/giasu", to: "static_pages#tutor"
+  get "/hocsinh", to: "static_pages#student"
+  get "/phuhuynh", to: "static_pages#parent"
   get "/about", to: "static_pages#about"
 
   get "/signup", to: "users#new"
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :users, only: [:destroy, :show]
-  resources :tutors, only: [:new, :create]
-  resources :students, only: [:new, :create]
+  resources :tutors, only: [:new, :create, :show]
+  resources :students, only: [:new, :create, :show]
 
   namespace :admin do
     root "static_pages#index"

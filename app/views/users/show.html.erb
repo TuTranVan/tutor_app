@@ -1,12 +1,2 @@
 <% provide(:title, @user.name) %>
-<% if @user.admin? %>
   <%= @user.email %>
-<% end %>
-
-<% if @user.student? %>
-  <%= render @user.student %>
-<% end %>
-
-<% if @user.tutor? %>
-  <%= render @user.tutor %>
-<% end %>
