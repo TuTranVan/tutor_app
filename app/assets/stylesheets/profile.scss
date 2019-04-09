@@ -45,5 +45,24 @@
     width: 96px;
     border-radius: 16px;
   }
+  .mentor-content{
+    padding-left: 1em;
+    padding-top: 1em;
+    font-size: 90%;
+    color: black;
+  }
 }
-
+/*------------------------------------------*/
+.subject-taught li {
+    padding: 1em 1em 0 1em;
+    list-style: none;
+    font-size: 14px;
+    color: #92929D;
+}
+.subject-taught li:before {
+    content: url("subject-taught-icon.svg");
+    display: inline-block;
+    width: 13px;
+    height: 12.431px;
+    margin-right: 10px;
+}

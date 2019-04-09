@@ -1,0 +1,24 @@
+<li><%= certificate.school %>
+  <% if logged_in? && current_user?(@tutor.user) %>
+    <span style="padding-left: 1em">
+      <%= link_to edit_certificate_path(certificate) do %>
+        <em class="fa fa-pencil"></em>
+      <% end %>
+    </span>
+
+    <span style="padding-left: 1em">
+      <%= link_to certificate_path(certificate), method: :delete, data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+        <em class="fa fa-trash"></em>
+      <% end %>
+    </span>
+  <% end %>
+  <div style="padding-left: 2em; padding-top: 0.5em">
+    Chuyên ngành <b style="color: black"><%= certificate.major %></b>
+  </div>
+  <div style="padding-left: 2em; padding-top: 0.5em">
+    Khóa học <b style="color: black"><%= certificate.course %></b>
+  </div>
+  <div style="padding-left: 2em; padding-top: 0.5em">
+    Xếp loại <b style="color: black"><%= certificate.grade %></b>
+  </div>
+</li>

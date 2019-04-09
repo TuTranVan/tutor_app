@@ -55,33 +55,7 @@
     </div>
   </div>
   <div class="col-md-8 mentor-info">
-    <div class="row">
-      <h3 class="mentor-title">Thông tin chung</h3>
-      <div class="mentor-content"><%= @tutor.introduce %></div>
-    </div>
-    <div class="row">
-      <h3 class="mentor-title">Chủ đề dạy</h3>
-      <div class="mentor-content">
-
-      </div>
-    </div>
-    <div class="row">
-      <h3 class="mentor-title">Bằng cấp
-        <% if logged_in? && current_user?(@tutor.user) %>
-          <%= link_to "+", new_certificate_path, class: "button-background" %>
-        <% end %>
-      </h3>
-      <div>
-        <ul class="subject-taught">
-          <%= render @tutor.certificates %>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <h3 class="mentor-title">Đánh giá</h3>
-    </div>
-    <div class="row">
-      <h3 class="mentor-title">Bài viết</h3>
-    </div>
+    <h3 class="text-center">Cập nhật thông tin bằng cấp</h3><br>
+    <%= render "form" %>
   </div>
 </div>

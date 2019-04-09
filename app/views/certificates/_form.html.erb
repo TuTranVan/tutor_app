@@ -1,0 +1,23 @@
+<%= form_for  @certificate do |f| %>
+  <%= render "shared/error_messages", object: @certificate %>
+
+  <div class="form-group">
+    <%= f.text_field :school, class: "form-control", placeholder: "Tên trường" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :major, class: "form-control", placeholder: "Chuyên ngành" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :grade, class: "form-control", placeholder: "Xếp loại" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :course, class: "form-control", placeholder: "Khóa học" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Cập nhật", class: "button-background" %>
+  </div>
+<% end %>

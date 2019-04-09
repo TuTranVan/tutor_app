@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:destroy, :show]
   resources :tutors, only: [:new, :create, :show]
   resources :students, only: [:new, :create, :show]
+  resources :certificates, except: [:index, :show]
 
   namespace :admin do
     root "static_pages#index"
