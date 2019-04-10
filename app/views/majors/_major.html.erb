@@ -1,0 +1,9 @@
+<li><%= major.subject.name %>
+  <% if logged_in? && current_user?(@tutor.user) %>
+    <span style="padding-left: 1em">
+      <%= link_to major_path(major), method: :delete, data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+        <em class="fa fa-trash"></em>
+      <% end %>
+    </span>
+  <% end %>
+</li>
