@@ -1,6 +1,10 @@
 class TutorsController < ApplicationController
   before_action :load_tutor, only: %i(show)
 
+  def index
+    @tutors = Tutor.all
+  end
+
   def new
     @tutor = Tutor.new
   end
