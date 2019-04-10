@@ -1,0 +1,35 @@
+<div class="col-md-3 list-tutor">
+  <div class="card">
+    <%= image_tag tutor.avatar_url.to_s %>
+    <div class="card-name"><%= tutor.user.name %></div>
+    <div class="row" style="padding: 0.3em">
+      <div class="col-md-6">
+        <i class="fa fa-calendar"> <%= tutor.dob %></i>
+      </div>
+      <div class="col-md-6">
+        <i class="fa fa-graduation-cap"> <%= tutor.literacy %></i>
+      </div>
+    </div>
+    <div class="row" style="padding: 0.3em">
+      <div class="col-md-6">
+        <i class="fa fa-map-marker"> <%= tutor.address %></i>
+      </div>
+      <div class="col-md-6">
+        <i class="fa fa-phone"> <%= tutor.phone %></i>
+      </div>
+    </div>
+    <div class="row" style="padding: 0.3em">
+      <div class="col-md-12 text-center">
+        <span class="fa fa-star star"></span>
+        <span class="fa fa-star star"></span>
+        <span class="fa fa-star star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </div>
+    </div>
+
+    <div class="row text-center" style="padding: 0.7em 0">
+      <%= link_to "Xem chi tiết",tutor, class: "button-background"%>
+    </div>
+  </div>
+</div>

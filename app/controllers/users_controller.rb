@@ -6,6 +6,8 @@ class UsersController < ApplicationController
       redirect_to @user.student
     elsif @user.tutor?
       redirect_to @user.tutor
+    else
+      redirect_to admin_root_path
     end
   end
 
