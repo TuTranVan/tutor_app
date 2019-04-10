@@ -1,0 +1,10 @@
+<%= form_for current_user.tutor.majors.build do |f| %>
+
+  <div class="form-group">
+    <%= f.select(:subject_id, select_subject, {}, {class: "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Cập nhật", class: "button-background" %>
+  </div>
+<% end %>
