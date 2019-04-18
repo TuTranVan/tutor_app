@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.date_field :dob, class: "form-control" %>
+      <%= f.date_field :dob, class: "form-control", max: Date.today %>
     </div>
 
     <div class="row form-group">
@@ -33,8 +33,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :literacy, class: "control-label" %>
-      <%= f.select :literacy, options_for_student, class: "form-control" %>
+      <%= f.select(:literacy, options_for_student, {:include_blank => "Trình độ học vấn "}, {class: "form-control"}) %>
     </div>
 
     <div class="form-group">

@@ -1,14 +1,14 @@
 class Post < ApplicationRecord
-  belongs_to :tutor
-  belongs_to :student
+  belongs_to :tutor, optional: true
+  belongs_to :student, optional: true
   belongs_to :subject
   has_many :reports, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
-  validates :type, presence: true
   validates :level, presence: true
   validates :title, presence: true
-  validates :fee, presence: true, numericality: {only_integer: true}
+  validates :from_date, presence: true
+  validates :fee, presence: true, numericality: {only_float: true}
 
-  enum status: {open: 0, approved: 1, waiting: 2 ,starting: 3, finished: 4}
+  enum status: {open: 0, waiting: 1,starting: 2, finished: 3}
 end

@@ -1,20 +1,28 @@
-class CertificatesController < ApplicationController
-  before_action :load_certificate, only: %i(edit update destroy)
+class PostsController < ApplicationController
+  before_action :load_post, only: %i(show edit update destroy)
+
+  def index
+
+  end
 
   def new
     @tutor = current_user.tutor
-    @certificate = @tutor.certificates.build
+    @post = @tutor.posts.build
   end
 
   def create
-    @certificate = current_user.tutor.certificates.build certificate_params
-    if @certificate.save
+    @post = current_user.tutor.posts.build post_params
+    if @post.save
       flash[:success] = "Cập nhật thành công"
-      redirect_to @certificate.tutor
+      redirect_to @post.tutor
     else
       @tutor = current_user.tutor
       render :new
     end
+  end
+
+  def show
+
   end
 
   def edit
@@ -22,7 +30,7 @@ class CertificatesController < ApplicationController
   end
 
   def update
-    if @certificate.update_attributes certificate_params
+    if @post.update_attributes post_params
       flash[:success] = "Cập nhật thành công"
       redirect_to current_user.tutor
     else
@@ -32,7 +40,7 @@ class CertificatesController < ApplicationController
   end
 
   def destroy
-    if @certificate.destroy
+    if @post.destroy
       flash[:success] = "Bạn đã xóa thành công"
     else
       flash[:danger] = "Có lỗi khi xóa. Vui lòng thử lại"
@@ -42,13 +50,13 @@ class CertificatesController < ApplicationController
 
   private
 
-  def certificate_params
-    params.require(:certificate).permit :school, :major, :grade, :course
+  def post_params
+    params.require(:post).permit :subject_id, :level, :title, :fee, :from_date, :brand
   end
 
-  def load_certificate
-    @certificate = Certificate.find_by id: params[:id]
-    return if @certificate
+  def load_post
+    @post = Post.find_by id: params[:id]
+    return if @post
     redirect_to current_user.tutor
   end
 end
