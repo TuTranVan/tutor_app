@@ -33,4 +33,8 @@ module SessionsHelper
   def select_subject
     Subject.all.map{|s| [s.name, s.id]}
   end
+
+  def select_major
+    current_user.tutor.majors.map{|m| [m.subject.name, m.subject.id]}
+  end
 end

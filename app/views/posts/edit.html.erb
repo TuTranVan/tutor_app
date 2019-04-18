@@ -1,0 +1,61 @@
+<% provide(:title, @tutor.user.name) %>
+<div class="row">
+  <div class="col-md-4 profile">
+    <div class="row mentor-avatar">
+      <%= image_tag @tutor.avatar_url.to_s %>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-info-circle fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Họ tên đầy đủ</div>
+        <p><%= @tutor.user.name %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-calendar fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Ngày tháng năm sinh</div>
+        <p><%= @tutor.dob %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-map-marker fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Nơi sống</div>
+        <p><%= @tutor.address %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-user fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Giới tính</div>
+        <p><%= @tutor.gender %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-graduation-cap fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Trình độ học vấn</div>
+        <p><%= @tutor.literacy %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-phone fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Số điện thoại</div>
+        <p><%= @tutor.phone %></p>
+      </div>
+    </div>
+    <div class="row info">
+      <div class="col-md-2"><i class="fa fa-envelope fa-2x"></i></div>
+      <div class="col-md-9">
+        <div class="title">Email</div>
+        <p><%= @tutor.user.email %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 mentor-info">
+    <h3 class="text-center">Cập nhật thông tin bằng cấp</h3><br>
+    <%= render "form" %>
+  </div>
+</div>

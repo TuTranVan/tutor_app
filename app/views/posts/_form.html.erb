@@ -1,0 +1,31 @@
+<%= form_for  @post do |f| %>
+  <%= render "shared/error_messages", object: @post %>
+
+  <%= f.hidden_field :brand, value: "Gia Sư Tìm Trò" %>
+
+  <div class="form-group">
+    <%= f.select(:subject_id, select_major, {:include_blank => "Chọn môn dạy"}, {class: "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.select(:level, options_for_student, {:include_blank => "Chọn cấp độ"}, {class: "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :title, class: "form-control", placeholder: "Tiêu đề" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.number_field :fee, class: "form-control", placeholder: "Học phí", min: 0 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :from_date, class: "form-control", min: Date.today %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Cập nhật", class: "button-background" %>
+    <%= link_to "Trở lại", current_user.tutor, class: "button-background" %>
+  </div>
+<% end %>
+

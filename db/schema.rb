@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20190328133410) do
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
+    t.string "brand"
     t.bigint "tutor_id"
     t.bigint "student_id"
     t.bigint "subject_id"

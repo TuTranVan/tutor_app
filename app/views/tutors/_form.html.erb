@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.date_field :dob, class: "form-control" %>
+      <%= f.date_field :dob, class: "form-control", max: Date.today %>
     </div>
 
     <div class="row form-group">
@@ -33,12 +33,11 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :literacy, class: "control-label" %>
-      <%= f.select :literacy, options_for_tutor, class: "form-control" %>
+      <%= f.select(:literacy, options_for_tutor, {:include_blank => "Trình độ học vấn "}, {class: "form-control"}) %>
     </div>
+
     <div class="form-group">
-      <%= f.label :introduce, class: "control-label" %>
-      <%= f.text_area :introduce, class: "form-control" %>
+      <%= f.text_area :introduce, class: "form-control", placeholder: "Giới thiệu" %>
     </div>
 
     <div class="form-group">

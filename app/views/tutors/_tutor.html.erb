@@ -19,6 +19,11 @@
       </div>
     </div>
     <div class="row" style="padding: 0.3em">
+      <div class="col-md-12">
+        <i class="fa fa-book"> <%= tutor.majors.map{|m| m.subject.name}.join(", ") %></i>
+      </div>
+    </div>
+    <div class="row" style="padding: 0.3em">
       <div class="col-md-12 text-center">
         <span class="fa fa-star star"></span>
         <span class="fa fa-star star"></span>
