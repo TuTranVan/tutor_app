@@ -118,7 +118,7 @@
         <ul class="subject-taught">
           <% @tutor.posts.open.each do |post| %>
             <li>
-              <%= link_to "#", class: "nav-link cool" do %>
+              <%= link_to post, class: "nav-link cool" do %>
                 <%= post.subject.name %> - <%= post.level %> - <%= post.fee.to_i %>/buổi - Ngày bắt đầu: <%= post.from_date %>
               <% end %>
 

@@ -1,0 +1,26 @@
+<div class="row" id="post">
+  <div class="col-md-12">
+    <%= link_to post, class: "col-md-8 nav-link cool title" do %>
+      [<%= post.brand %>] <%=post.title %>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <p><i class="fa fa-user"></i> <%= post.tutor.nil? ? post.student.user.name : post.tutor.user.name %></p>
+      <p><i class="fa fa-calendar"></i> <%= post.created_at %></p>
+    </div>
+    <div class="col-md-4">
+      <p><i class="fa fa-book"></i> Môn học: <%= post.subject.name %></p>
+      <p><i class="fa fa-graduation-cap"></i> Cấp độ: <%= post.level %></p>
+    </div>
+    <div class="col-md-4">
+      <p><i class="fa fa-money"></i> Học phí: <%= post.fee.to_i %>/buổi</p>
+      <p><i class="fa fa-map-marker"></i> Địa chỉ: <%= post.tutor.nil? ? post.student.address : post.tutor.address %></p>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <button class="button-background">Đăng ký</button>
+    </div>
+  </div>
+</div>
