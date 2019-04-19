@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-12">
     <div class="col-md-4">
-      <p><i class="fa fa-user"></i> <%= post.tutor.nil? ? post.student.user.name : post.tutor.user.name %></p>
+      <p><i class="fa fa-user"></i> <%= post.ofTutor? ? post.tutor.user.name : post.student.user.name %></p>
       <p><i class="fa fa-calendar"></i> <%= post.created_at %></p>
     </div>
     <div class="col-md-4">
@@ -15,12 +15,12 @@
     </div>
     <div class="col-md-4">
       <p><i class="fa fa-money"></i> Học phí: <%= post.fee.to_i %>/buổi</p>
-      <p><i class="fa fa-map-marker"></i> Địa chỉ: <%= post.tutor.nil? ? post.student.address : post.tutor.address %></p>
+      <p><i class="fa fa-map-marker"></i> Địa chỉ: <%= post.ofTutor? ? post.tutor.address : post.student.address %></p>
     </div>
   </div>
   <div class="col-md-12">
     <div class="col-md-12">
-      <button class="button-background">Đăng ký</button>
+      <button class="button-background">Đăng ký <%= post.ofTutor? ? "học" : "dạy" %></button>
     </div>
   </div>
 </div>

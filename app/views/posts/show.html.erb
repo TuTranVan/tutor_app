@@ -1,51 +1,48 @@
 <% provide(:title, @post.title) %>
 <div class="row mentor-info show-post">
-
   <div class="col-md-12 created_at">Ngày đăng: <%= @post.created_at%></div>
 
-  <div class="col-md-4">
-    <div class="col-md-12 info">
-      <h3>Thông tin người đăng</h3>
-      <ul>
-        <div class="user">
-          <i class="fa fa-user"></i> <%= @post.tutor.nil? ? @post.student.user.name : @post.tutor.user.name %>
-        </div>
-        <div class="user">
-          <i class="fa fa-calendar"></i> <%= @post.tutor.nil? ? @post.student.dob : @post.tutor.dob %>
-        </div>
-        <div class="user">
-          <i class="fa fa-phone"></i> <%= @post.tutor.nil? ? @post.student.phone : @post.tutor.phone %>
-        </div>
-        <div class="user">
-          <i class="fa fa-map-marker"></i> <%= @post.tutor.nil? ? @post.student.address : @post.tutor.address %>
-        </div>
-        <div class="user">
-          <i class="fa fa-graduation-cap"></i> <%= @post.tutor.nil? ? @post.student.literacy : @post.tutor.literacy %>
-        </div>
-        <div class="user">
-          <i class="fa fa-envelope"></i> <%= @post.tutor.nil? ? @post.student.user.email : @post.tutor.user.email %>
-        </div>
-        <% if @post.student.nil?%>
-         <div class="user"><%= link_to "Xem chi tiết gia sư", @post.tutor %></div>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="col-md-12 info">
-      <h3>Thông tin lớp học</h3>
-      <ul>
-        <div class="user"><i class="fa fa-flag-checkered"></i> <%= @post.title %></div>
-        <div class="user"><i class="fa fa-book"></i> <%= @post.subject.name %></div>
-        <div class="user"><i class="fa fa-graduation-cap"></i> <%= @post.level %></div>
-        <div class="user"><i class="fa fa-money"></i> <%= @post.fee.to_i %>/buổi</div>
-        <div class="user created_at">Dự kiến bắt đầu: <%= @post.from_date%></div>
-      </ul>
-    </div>
+  <div class="col-md-4 info">
+    <h3>Thông tin người đăng</h3>
+    <ul>
+      <div class="user">
+        <i class="fa fa-user"></i> <%= @post.ofTutor? ? @post.tutor.user.name : @post.student.user.name %>
+      </div>
+      <div class="user">
+        <i class="fa fa-calendar"></i> <%= @post.ofTutor? ? @post.tutor.dob : @post.student.dob %>
+      </div>
+      <div class="user">
+        <i class="fa fa-phone"></i> <%= @post.ofTutor? ? @post.tutor.phone : @post.student.phone %>
+      </div>
+      <div class="user">
+        <i class="fa fa-map-marker"></i> <%= @post.ofTutor? ? @post.tutor.address : @post.student.address %>
+      </div>
+      <div class="user">
+        <i class="fa fa-graduation-cap"></i> <%= @post.ofTutor? ? @post.tutor.literacy : @post.student.literacy %>
+      </div>
+      <div class="user">
+        <i class="fa fa-envelope"></i> <%= @post.ofTutor? ? @post.tutor.user.email : @post.student.user.email %>
+      </div>
+      <% if @post.ofTutor? %>
+       <div class="user"><%= link_to "Xem chi tiết gia sư", @post.tutor %></div>
+      <% end %>
+    </ul>
   </div>
 
-  <div class="col-md-8 info">
+  <div class="col-md-4 info">
+    <h3>Thông tin lớp học</h3>
+    <ul>
+      <div class="user"><i class="fa fa-flag-checkered"></i> <%= @post.title %></div>
+      <div class="user"><i class="fa fa-book"></i> <%= @post.subject.name %></div>
+      <div class="user"><i class="fa fa-graduation-cap"></i> <%= @post.level %></div>
+      <div class="user"><i class="fa fa-money"></i> <%= @post.fee.to_i %>/buổi</div>
+      <div class="user created_at">Dự kiến bắt đầu: <%= @post.from_date%></div>
+    </ul>
+  </div>
+
+  <div class="col-md-4 info">
     <h3>Lịch học dự kiến
-    <% if logged_in? && current_user?(@post.tutor.nil? ? @post.student.user : @post.tutor.user) %>
+      <% if logged_in? && current_user?(@post.ofTutor? ? @post.tutor.user : @post.student.user) %>
         <!-- Button trigger modal -->
         <button type="button" class="button-background" data-toggle="modal" data-target="#schedules">+</button>
         <!-- Modal -->
@@ -59,12 +56,21 @@
                 </button>
               </div>
               <div class="modal-body">
+                <%= render "schedules/form" %>
               </div>
             </div>
           </div>
         </div>
       <% end %>
     </h3>
+    <div>
+      <ul class="subject-taught">
+        <%= render @post.schedules %>
+      </ul>
+    </div>
   </div>
 
+  <div class="col-md-12">
+    <button class="button-background">Đăng ký <%= @post.ofTutor? ? "học" : "dạy" %></button>
+  </div>
 </div>
