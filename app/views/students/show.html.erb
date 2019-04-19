@@ -53,16 +53,35 @@
   </div>
   <div class="col-md-8 mentor-info">
     <div class="row">
-      <h4 class="mentor-title">Thông tin chung</h4>
-    </div>
-    <div class="row">
-      <h4 class="mentor-title">Bằng cấp</h4>
-    </div>
-    <div class="row">
-      <h4 class="mentor-title">Đánh giá</h4>
-    </div>
-    <div class="row">
-      <h4 class="mentor-title">Bài viết</h4>
+      <h3 class="mentor-title">Bài đăng
+        <% if logged_in? && current_user?(@student.user) %>
+          <%= link_to "+", new_post_path, class: "button-background" %>
+        <% end %>
+      </h3>
+      <div>
+        <ul class="subject-taught">
+          <% @student.posts.open.each do |post| %>
+            <li>
+              <%= link_to post, class: "nav-link cool" do %>
+                <%= post.subject.name %> - <%= post.level %> - <%= post.fee.to_i %>/buổi - Ngày bắt đầu: <%= post.from_date %>
+              <% end %>
+
+              <% if logged_in? && current_user?(@student.user) %>
+                <span style="padding-left: 1em">
+                  <%= link_to edit_post_path(post) do %>
+                    <em class="fa fa-pencil"></em>
+                  <% end %>
+                </span>
+                <span style="padding-left: 1em">
+                  <%= link_to post_path(post), method: :delete, data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+                    <em class="fa fa-trash"></em>
+                  <% end %>
+                </span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

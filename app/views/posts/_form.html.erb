@@ -1,10 +1,14 @@
 <%= form_for  @post do |f| %>
   <%= render "shared/error_messages", object: @post %>
 
-  <%= f.hidden_field :brand, value: "Gia Sư Tìm Trò" %>
+  <% if current_user.tutor? %>
+    <%= f.hidden_field :brand, value: "Gia Sư Tìm Trò" %>
+  <% else %>
+    <%= f.hidden_field :brand, value: "Trò Tìm Gia Sư" %>
+  <% end%>
 
   <div class="form-group">
-    <%= f.select(:subject_id, select_major, {:include_blank => "Chọn môn dạy"}, {class: "form-control"}) %>
+    <%= f.select(:subject_id, select_subject, {:include_blank => "Chọn môn dạy"}, {class: "form-control"}) %>
   </div>
 
   <div class="form-group">
@@ -25,7 +29,7 @@
 
   <div class="form-group">
     <%= f.submit "Cập nhật", class: "button-background" %>
-    <%= link_to "Trở lại", current_user.tutor, class: "button-background" %>
+    <%= link_to "Trở lại", current_user, class: "button-background" %>
   </div>
 <% end %>
 

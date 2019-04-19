@@ -35,6 +35,6 @@ module SessionsHelper
   end
 
   def select_major
-    current_user.tutor.majors.map{|m| [m.subject.name, m.subject.id]}
+    current_user.tutor.majors.map{|m| [m.subject.name, m.subject.id]}.uniq
   end
 end

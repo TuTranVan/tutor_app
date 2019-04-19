@@ -2,39 +2,40 @@ class PostsController < ApplicationController
   before_action :load_post, only: %i(show edit update destroy)
 
   def index
-
+    @posts = Post.all.open
   end
 
   def new
-    @tutor = current_user.tutor
-    @post = @tutor.posts.build
+    if current_user.tutor?
+      @post = current_user.tutor.posts.build
+    else
+      @post = current_user.student.posts.build
+    end
   end
 
   def create
-    @post = current_user.tutor.posts.build post_params
+    if current_user.tutor?
+      @post = current_user.tutor.posts.build post_params
+    else
+      @post = current_user.student.posts.build post_params
+    end
     if @post.save
       flash[:success] = "Cập nhật thành công"
-      redirect_to @post.tutor
+      redirect_to @post
     else
-      @tutor = current_user.tutor
       render :new
     end
   end
 
-  def show
+  def show; end
 
-  end
-
-  def edit
-    @tutor = current_user.tutor
-  end
+  def edit; end
 
   def update
     if @post.update_attributes post_params
       flash[:success] = "Cập nhật thành công"
-      redirect_to current_user.tutor
+      redirect_to @post
     else
-      @tutor = current_user.tutor
       render :edit
     end
   end
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Có lỗi khi xóa. Vui lòng thử lại"
     end
-    redirect_to current_user.tutor
+    redirect_to current_user
   end
 
   private
