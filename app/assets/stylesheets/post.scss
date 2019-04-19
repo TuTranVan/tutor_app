@@ -11,3 +11,31 @@
     font-weight: bold;
   }
 }
+/********** SHOW POST *************/
+.show-post{
+  font-size: 105%;
+  color: black;
+  .created_at{
+    color: silver;
+    font-size: 90%;
+    margin-bottom: 1em;
+  }
+  .info{
+    padding-bottom: 1em;
+    h3{
+      font-size: 115%;
+      font-weight: bold;
+    }
+    ul{
+      margin-left: 2em;
+      padding: 0.5em;
+      .user{
+        color: gray;
+        padding: 0.5em;
+      }
+      i{
+        color: black;
+      }
+    }
+  }
+}
