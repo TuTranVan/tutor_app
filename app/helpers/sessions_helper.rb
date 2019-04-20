@@ -34,7 +34,7 @@ module SessionsHelper
     Subject.all.map{|s| [s.name, s.id]}
   end
 
-  def select_major
-    current_user.tutor.majors.map{|m| [m.subject.name, m.subject.id]}.uniq
+  def options_for_day
+    ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
   end
 end

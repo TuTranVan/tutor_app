@@ -1,0 +1,20 @@
+<%= form_for Schedule.new do |f| %>
+
+  <%= f.hidden_field :post_id, value: @post.id %>
+
+  <div class="form-group">
+    <%= f.select(:day, options_for_day, {}, {class: "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.time_field :start_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.time_field :end_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Cập nhật", class: "button-background" %>
+  </div>
+<% end %>

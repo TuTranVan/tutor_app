@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   validates :fee, presence: true, numericality: {only_float: true}
 
   enum status: {open: 0, waiting: 1,starting: 2, finished: 3}
+
+  def ofTutor?
+    brand == "Gia Sư Tìm Trò"
+  end
 end

@@ -1,0 +1,10 @@
+<li>
+  <%= schedule.day %> - Từ <%= schedule.start_time.strftime("%H:%M") %> đến <%= schedule.end_time.strftime("%H:%M") %>
+  <% if logged_in? && current_user?(schedule.post.ofTutor? ? schedule.post.tutor.user : schedule.post.student.user) %>
+    <span style="padding-left: 1em">
+      <%= link_to schedule_path(schedule), method: :delete, data: {confirm: "Bạn chắc chắn muốn xóa?"} do %>
+        <em class="fa fa-trash"></em>
+      <% end %>
+    </span>
+  <% end %>
+</li>
