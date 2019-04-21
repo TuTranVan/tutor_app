@@ -7,7 +7,7 @@
   <div class="col-md-12">
     <div class="col-md-4">
       <p><i class="fa fa-user"></i> <%= post.ofTutor? ? post.tutor.user.name : post.student.user.name %></p>
-      <p><i class="fa fa-calendar"></i> <%= post.created_at %></p>
+      <p><i class="fa fa-calendar"></i> <%= post.created_at.strftime("%F") %></p>
     </div>
     <div class="col-md-4">
       <p><i class="fa fa-book"></i> Môn học: <%= post.subject.name %></p>
