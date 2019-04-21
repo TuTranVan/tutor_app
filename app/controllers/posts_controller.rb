@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: %i(show edit update destroy register)
+  before_action :load_post, only: %i(show edit update destroy register approve reject finish)
 
   def index
     @posts = Post.newest.open
@@ -52,19 +52,41 @@ class PostsController < ApplicationController
   def register
     if @post.ofTutor?
       if current_user.tutor? || current_user.admin?
-        redirect_to @post
+        redirect_to current_user
       else
         @post.update_attributes status: 1, student_id: current_user.student.id
-        redirect_to @post
+        redirect_to current_user
       end
     else
       if current_user.student? || current_user.admin?
-        redirect_to @post
+        redirect_to current_user
       else
         @post.update_attributes status: 1, tutor_id: current_user.tutor.id
-        redirect_to @post
+        redirect_to current_user
       end
     end
+  end
+
+  def approve
+    @post.update_attributes status: 2
+    flash[:success] = "Bạn đã phê duyệt yêu cầu"
+    redirect_to current_user
+  end
+
+  def reject
+    if @post.ofTutor?
+      @post.update_attributes status: 0, student_id: nil
+    else
+      @post.update_attributes status: 0, tutor_id: nil
+    end
+    flash[:success] = "Bạn đã từ chối yêu cầu"
+    redirect_to current_user
+  end
+
+  def finish
+    @post.update_attributes status: 3, to_date: Date.current
+    flash[:success] = "Bạn đã kết thúc lớp học"
+    redirect_to current_user
   end
 
   private

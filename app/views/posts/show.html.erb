@@ -1,6 +1,6 @@
 <% provide(:title, @post.title) %>
 <div class="row mentor-info show-post">
-  <div class="col-md-12 created_at">Ngày đăng: <%= @post.created_at%></div>
+  <div class="col-md-12 created_at">Ngày đăng: <%= @post.created_at.strftime("%F") %></div>
 
   <div class="col-md-4 info">
     <h3>Thông tin người đăng</h3>
@@ -36,7 +36,7 @@
       <div class="user"><i class="fa fa-book"></i> <%= @post.subject.name %></div>
       <div class="user"><i class="fa fa-graduation-cap"></i> <%= @post.level %></div>
       <div class="user"><i class="fa fa-money"></i> <%= @post.fee.to_i %>/buổi</div>
-      <div class="user created_at">Dự kiến bắt đầu: <%= @post.from_date%></div>
+      <div class="user created_at">Dự kiến bắt đầu: <%= @post.from_date %></div>
     </ul>
   </div>
 
