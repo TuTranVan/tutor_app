@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   resources :certificates, except: [:index, :show]
   resources :majors, only: [:create, :destroy]
   resources :schedules, only: [:create, :destroy]
-  resources :posts
+  resources :posts do
+    member do
+      get :register
+    end
+  end
 
   namespace :admin do
     root "static_pages#index"

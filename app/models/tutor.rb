@@ -15,4 +15,6 @@ class Tutor < ApplicationRecord
   validates :address, presence: true
   validates :literacy, presence: true
   validates :avatar, presence: true
+
+  scope :newest, ->{order created_at: :desc}
 end

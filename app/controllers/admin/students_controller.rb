@@ -2,7 +2,7 @@ class Admin::StudentsController < AdminController
   before_action :load_student, only: %i(show)
 
   def index
-    @students = Student.all
+    @students = Student.newest
   end
 
   def show; end

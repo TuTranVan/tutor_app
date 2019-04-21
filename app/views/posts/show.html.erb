@@ -71,6 +71,16 @@
   </div>
 
   <div class="col-md-12">
-    <button class="button-background">Đăng ký <%= @post.ofTutor? ? "học" : "dạy" %></button>
+    <% if logged_in? %>
+      <% if @post.open? %>
+        <%= link_to register_post_path(@post) do %>
+          <button class="button-background">Đăng ký <%= @post.ofTutor? ? "học" : "dạy" %></button>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to login_path do %>
+        <button class="button-background">Đăng ký <%= @post.ofTutor? ? "học" : "dạy" %></button>
+      <% end %>
+    <% end %>
   </div>
 </div>

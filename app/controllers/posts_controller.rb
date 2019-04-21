@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :load_post, only: %i(show edit update destroy)
+  before_action :load_post, only: %i(show edit update destroy register)
 
   def index
-    @posts = Post.all.open
+    @posts = Post.newest.open
   end
 
   def new
@@ -47,6 +47,24 @@ class PostsController < ApplicationController
       flash[:danger] = "Có lỗi khi xóa. Vui lòng thử lại"
     end
     redirect_to current_user
+  end
+
+  def register
+    if @post.ofTutor?
+      if current_user.tutor? || current_user.admin?
+        redirect_to @post
+      else
+        @post.update_attributes status: 1, student_id: current_user.student.id
+        redirect_to @post
+      end
+    else
+      if current_user.student? || current_user.admin?
+        redirect_to @post
+      else
+        @post.update_attributes status: 1, tutor_id: current_user.tutor.id
+        redirect_to @post
+      end
+    end
   end
 
   private

@@ -9,4 +9,6 @@ class Student < ApplicationRecord
   validates :phone, presence: true
   validates :address, presence: true
   validates :literacy, presence: true
+
+  scope :newest, ->{order created_at: :desc}
 end
