@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   resources :certificates, except: [:index, :show]
   resources :majors, only: [:create, :destroy]
   resources :schedules, only: [:create, :destroy]
+  resources :reports, only: [:create, :destroy] do
+    member do
+      get :showclass
+    end
+  end
   resources :posts do
     member do
       get :register

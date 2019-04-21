@@ -1,0 +1,142 @@
+<% provide(:title, @post.title) %>
+<div class="row mentor-info show-post">
+  <div class="col-md-4 info">
+    <h3>Thông tin gia sư</h3>
+    <ul>
+      <div class="user">
+        <i class="fa fa-user"></i> <%= @post.tutor.user.name %>
+      </div>
+      <div class="user">
+        <i class="fa fa-calendar"></i> <%= @post.tutor.dob %>
+      </div>
+      <div class="user">
+        <i class="fa fa-phone"></i> <%= @post.tutor.phone %>
+      </div>
+      <div class="user">
+        <i class="fa fa-map-marker"></i> <%= @post.tutor.address %>
+      </div>
+      <div class="user">
+        <i class="fa fa-graduation-cap"></i> <%= @post.tutor.literacy %>
+      </div>
+      <div class="user">
+        <i class="fa fa-envelope"></i> <%= @post.tutor.user.email %>
+      </div>
+      <div class="user">
+        <%= link_to "Xem chi tiết gia sư", @post.tutor %>
+      </div>
+    </ul>
+  </div>
+
+  <div class="col-md-4 info">
+    <h3>Thông tin lớp học
+      <% if logged_in? && current_user?(@post.tutor.user) && @post.starting? %>
+        <%= link_to edit_post_path(@post), class: "button-background" do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+      <% end %>
+    </h3>
+    <ul>
+      <div class="user"><i class="fa fa-flag-checkered"></i> <%= @post.title %></div>
+      <div class="user"><i class="fa fa-book"></i> <%= @post.subject.name %></div>
+      <div class="user"><i class="fa fa-graduation-cap"></i> <%= @post.level %></div>
+      <div class="user"><i class="fa fa-money"></i> <%= @post.fee.to_i %>/buổi</div>
+      <div class="user"><i class="fa fa-calendar"></i> Bắt đầu: <%= @post.from_date %></div>
+      <div class="user"><i class="fa fa-calendar"></i> Kết thúc: <%= @post.to_date %></div>
+      <% if @post.starting? %>
+        <% if current_user?(@post.tutor.user) %>
+          <div class="user"><%= link_to "KẾT THÚC",finish_post_path(@post), class: "button-background" %></div>
+        <% end %>
+      <% else %>
+        <button class="button-background">ĐÃ KẾT THÚC</button>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-4 info">
+    <h3>Thông tin học sinh</h3>
+    <ul>
+      <div class="user">
+        <i class="fa fa-user"></i> <%= @post.student.user.name %>
+      </div>
+      <div class="user">
+        <i class="fa fa-calendar"></i> <%= @post.student.dob %>
+      </div>
+      <div class="user">
+        <i class="fa fa-phone"></i> <%= @post.student.phone %>
+      </div>
+      <div class="user">
+        <i class="fa fa-map-marker"></i> <%= @post.student.address %>
+      </div>
+      <div class="user">
+        <i class="fa fa-graduation-cap"></i> <%= @post.student.literacy %>
+      </div>
+      <div class="user">
+        <i class="fa fa-envelope"></i> <%= @post.student.user.email %>
+      </div>
+      <div class="user">
+        <%= link_to "Xem chi tiết học sinh", @post.student %>
+      </div>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="row mentor-info show-post">
+  <div class="col-md-4 info">
+    <h3>Lịch học
+      <% if logged_in? && current_user?(@post.tutor.user) && @post.starting? %>
+        <!-- Button trigger modal -->
+        <button type="button" class="button-background" data-toggle="modal" data-target="#schedules">+</button>
+        <!-- Modal -->
+        <div class="modal fade" id="schedules" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm lịch học</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render "schedules/form" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </h3>
+    <div>
+      <ul class="subject-taught">
+        <%= render @post.schedules %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8 info">
+    <h3>Sổ liên lạc
+      <% if logged_in? && current_user?(@post.tutor.user) && @post.starting? %>
+        <!-- Button trigger modal -->
+        <button type="button" class="button-background" data-toggle="modal" data-target="#reports">+</button>
+        <!-- Modal -->
+        <div class="modal fade" id="reports" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Nhận xét của gia sư</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render "reports/form" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </h3>
+    <div>
+      <ul class="subject-taught">
+        <%= render @post.reports %>
+      </ul>
+    </div>
+  </div>
+</div>

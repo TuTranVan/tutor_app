@@ -34,7 +34,11 @@ class PostsController < ApplicationController
   def update
     if @post.update_attributes post_params
       flash[:success] = "Cập nhật thành công"
-      redirect_to @post
+      if @post.starting?
+        redirect_to showclass_report_path(@post)
+      else
+        redirect_to @post
+      end
     else
       render :edit
     end
@@ -98,6 +102,6 @@ class PostsController < ApplicationController
   def load_post
     @post = Post.find_by id: params[:id]
     return if @post
-    redirect_to current_user.tutor
+    redirect_to current_user
   end
 end

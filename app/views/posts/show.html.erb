@@ -24,7 +24,7 @@
         <i class="fa fa-envelope"></i> <%= @post.ofTutor? ? @post.tutor.user.email : @post.student.user.email %>
       </div>
       <% if @post.ofTutor? %>
-       <div class="user"><%= link_to "Xem chi tiết gia sư", @post.tutor %></div>
+        <div class="user"><%= link_to "Xem chi tiết gia sư", @post.tutor %></div>
       <% end %>
     </ul>
   </div>

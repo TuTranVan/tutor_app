@@ -1,0 +1,13 @@
+<%= form_for Report.new do |f| %>
+
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :study_date, value: Date.current %>
+
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control", placeholder: "Nội dung" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Cập nhật", class: "button-background" %>
+  </div>
+<% end %>
