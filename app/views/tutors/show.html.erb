@@ -112,7 +112,7 @@
       </h3>
       <div>
         <ul class="subject-taught">
-          <% @tutor.posts.open.each do |post| %>
+          <% @tutor.posts.newest.open.each do |post| %>
             <li>
               <%= link_to post, class: "nav-link cool" do %>
                 <%= post.subject.name %> - <%= post.level %> - <%= post.fee.to_i %>/buổi - Ngày bắt đầu: <%= post.from_date %>
@@ -136,5 +136,44 @@
       </div>
     </div>
 
+    <% if logged_in? && current_user?(@tutor.user) %>
+      <div class="row">
+        <h3 class="mentor-title">Lớp đang đăng ký</h3><br>
+        <div>
+          <table class="table table-striped table-bordered table-list text-center">
+            <thead>
+              <tr>
+                <th class="text-center">Người đăng</th>
+                <th class="text-center">Môn học</th>
+                <th class="text-center">Cấp độ</th>
+                <th class="text-center"><em class="fa fa-cog"></em></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tutor.posts.newest.findTutor.waiting.each do |post| %>
+                <tr>
+                  <td><%= link_to post.student.user.name, student_path(post.student) %></td>
+                  <td><%=  post.subject.name %></td>
+                  <td><%=  post.level %></td>
+                  <td>
+                    <%= link_to post, class: "btn btn-primary" do %>
+                      <em class="fa fa-eye"></em>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+<!--  -->
+  <div class="col-md-12 mentor-info">
+    <div class="row">
+      <h3 class="mentor-title">Đánh giá về gia sư</h3>
+    </div>
   </div>
 </div>

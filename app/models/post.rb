@@ -12,6 +12,10 @@ class Post < ApplicationRecord
 
   enum status: {open: 0, waiting: 1,starting: 2, finished: 3}
 
+  scope :newest, ->{order created_at: :desc}
+  scope :findTutor, ->{where(brand: "Trò Tìm Gia Sư")}
+  scope :findStudent, ->{where(brand: "Gia Sư Tìm Trò")}
+
   def ofTutor?
     brand == "Gia Sư Tìm Trò"
   end

@@ -3,4 +3,6 @@ class Report < ApplicationRecord
 
   validates :study_date, presence: true
   validates :content, presence: true
+
+  scope :newest, ->{order created_at: :desc}
 end

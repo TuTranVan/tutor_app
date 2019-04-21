@@ -2,7 +2,7 @@ class Admin::TutorsController < AdminController
   before_action :load_tutor, only: %i(show)
 
   def index
-    @tutors = Tutor.all
+    @tutors = Tutor.newest
   end
 
   def show; end
