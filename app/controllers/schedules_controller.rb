@@ -8,7 +8,12 @@ class SchedulesController < ApplicationController
     else
       flash[:danger] = "Cập nhật thất bại"
     end
-    redirect_to @schedule.post
+
+    if @schedule.post.starting?
+      redirect_to showclass_report_path(@schedule.post)
+    else
+      redirect_to @schedule.post
+    end
   end
 
   def destroy
@@ -17,7 +22,12 @@ class SchedulesController < ApplicationController
     else
       flash[:danger] = "Có lỗi khi xóa. Vui lòng thử lại"
     end
-    redirect_to @schedule.post
+
+    if @schedule.post.starting?
+      redirect_to showclass_report_path(@schedule.post)
+    else
+      redirect_to @schedule.post
+    end
   end
 
   private

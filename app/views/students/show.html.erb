@@ -170,7 +170,7 @@
                   <td><%=  post.subject.name %></td>
                   <td><%=  post.level %></td>
                   <td>
-                    <%= link_to post, class: "btn btn-primary" do %>
+                    <%= link_to showclass_report_path(post), class: "btn btn-primary" do %>
                       <em class="fa fa-eye"></em>
                     <% end %>
                   </td>
@@ -204,7 +204,7 @@
                   <td><%=  post.from_date %></td>
                   <td><%=  post.to_date %></td>
                   <td>
-                    <%= link_to post, class: "btn btn-primary" do %>
+                    <%= link_to showclass_report_path(post), class: "btn btn-primary" do %>
                       <em class="fa fa-eye"></em>
                     <% end %>
                   </td>
