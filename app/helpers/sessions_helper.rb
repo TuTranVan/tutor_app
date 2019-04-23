@@ -34,7 +34,21 @@ module SessionsHelper
     Subject.all.map{|s| [s.name, s.id]}
   end
 
+  def select_rating
+    [
+      ["1 sao","1"],
+      ["2 sao","2"],
+      ["3 sao","3"],
+      ["4 sao","4"],
+      ["5 sao","5"]
+    ]
+  end
+
   def options_for_day
     ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
+  end
+
+  def total_rate score, tutor
+    tutor.reviews.where(score: score).count
   end
 end

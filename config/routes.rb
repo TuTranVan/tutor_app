@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :students, only: [:new, :create, :show]
   resources :certificates, except: [:index, :show]
   resources :majors, only: [:create, :destroy]
+  resources :reviews, only: [:create, :destroy]
   resources :schedules, only: [:create, :destroy]
   resources :reports, only: [:create, :destroy] do
     member do

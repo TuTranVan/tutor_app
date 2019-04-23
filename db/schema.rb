@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190328133410) do
+ActiveRecord::Schema.define(version: 20190421105126) do
 
   create_table "certificates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "tutor_id"
@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 20190328133410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tutor_id"], name: "index_certificates_on_tutor_id"
-  end
-
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "tutor_id"
-    t.bigint "student_id"
-    t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_comments_on_student_id"
-    t.index ["tutor_id"], name: "index_comments_on_tutor_id"
   end
 
   create_table "majors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,16 +50,6 @@ ActiveRecord::Schema.define(version: 20190328133410) do
     t.index ["tutor_id"], name: "index_posts_on_tutor_id"
   end
 
-  create_table "ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "tutor_id"
-    t.bigint "student_id"
-    t.string "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_ratings_on_student_id"
-    t.index ["tutor_id"], name: "index_ratings_on_tutor_id"
-  end
-
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "post_id"
     t.date "study_date"
@@ -77,6 +57,17 @@ ActiveRecord::Schema.define(version: 20190328133410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_reports_on_post_id"
+  end
+
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "tutor_id"
+    t.bigint "student_id"
+    t.integer "score"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_reviews_on_student_id"
+    t.index ["tutor_id"], name: "index_reviews_on_tutor_id"
   end
 
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -131,16 +122,14 @@ ActiveRecord::Schema.define(version: 20190328133410) do
   end
 
   add_foreign_key "certificates", "tutors"
-  add_foreign_key "comments", "students"
-  add_foreign_key "comments", "tutors"
   add_foreign_key "majors", "subjects"
   add_foreign_key "majors", "tutors"
   add_foreign_key "posts", "students"
   add_foreign_key "posts", "subjects"
   add_foreign_key "posts", "tutors"
-  add_foreign_key "ratings", "students"
-  add_foreign_key "ratings", "tutors"
   add_foreign_key "reports", "posts"
+  add_foreign_key "reviews", "students"
+  add_foreign_key "reviews", "tutors"
   add_foreign_key "schedules", "posts"
   add_foreign_key "students", "users"
   add_foreign_key "tutors", "users"

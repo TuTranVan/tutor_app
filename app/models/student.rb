@@ -1,7 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :user
-  has_many :comments, dependent: :destroy
-  has_many :ratings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   validates :gender, presence: true
@@ -11,4 +10,8 @@ class Student < ApplicationRecord
   validates :literacy, presence: true
 
   scope :newest, ->{order created_at: :desc}
+
+  def review tutor
+    review = self.reviews.find_by tutor_id: tutor.id
+  end
 end
