@@ -273,8 +273,70 @@
   </div>
 </div>
 <!--  --><br>
-<div class="row">
-  <div class="col-md-12 mentor-info">
-    <h3 class="mentor-title">Đánh giá về gia sư</h3>
+<div class="mentor-info">
+  <div class="row">
+    <div class="col-md-6">
+    <h3 class="mentor-title">Đánh giá của bạn</h3><br>
+      <% if logged_in? %>
+        <% if current_user.student? %>
+          <% if current_user.student.review(@tutor).nil?  %>
+            <%= render "reviews/form" %>
+          <% else %>
+            <!-- Your rating -->
+            <% rate = current_user.student.review(@tutor) %>
+            <% rate.score.to_i.times do  %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
+            <% (5-rate.score.to_i).times do  %>
+              <span class="fa fa-star"></span>
+            <% end %>
+            <span class="rate_del">
+              <%= link_to "Xóa",review_path(rate), method: :delete, data: {confirm: "Bạn chắc chắn muốn xóa?"} %>
+            </span>
+            <div class="rate_content"><%= rate.content %></div>
+            <i class="rate_date">~ <%= rate.created_at.strftime("%F %T") %> ~</i>
+          <% end %>
+          <!-- end your_rating -->
+        <% else %>
+            <p>Bạn không thể đánh giá gia sư này!</p>
+        <% end %>
+      <% else %>
+        <%= link_to "Đăng nhập để đánh giá", login_path %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h3 class="mentor-title">Đánh giá chung</h3>
+      <!-- Tính trung bình reviews -->
+      <% n = 5 %>
+      <% while(n>0)  %>
+        <div class="col-md-12 rate_statistical">
+          <% n.times do  %>
+            <span class="fa fa-star checked"></span>
+          <% end %>
+
+          <% (5-n.to_i).times do  %>
+            <span class="fa fa-star"></span>
+          <% end %>
+
+          <i class="rate_date">
+            <% if @tutor.reviews.size > 0 %>
+              (<%= total_rate(n,@tutor) %> lượt -
+              <%= total_rate(n,@tutor)*100/@tutor.reviews.size %>%)
+            <% else %>
+              (0)
+            <% end %>
+          </i>
+        </div>
+        <% n = n - 1 %>
+      <% end %>
+      <i class="rate_date">(<%= @tutor.reviews.count %> lượt đánh giá)</i>
+      <!-- end -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mentor-title">Đánh giá từ phụ huynh học sinh</h3><br>
+      <%= render @tutor.reviews.newest %>
+    </div>
   </div>
 </div>

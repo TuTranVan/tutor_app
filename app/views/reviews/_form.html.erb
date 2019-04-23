@@ -1,0 +1,18 @@
+<%= form_for Review.new do |f| %>
+
+  <%= f.hidden_field :student_id, value: current_user.student.id %>
+  <%= f.hidden_field :tutor_id, value: @tutor.id %>
+
+  <div class="form-group">
+    <%= f.select(:score, select_rating, {}, {class: "form-control star-rating"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control", placeholder: "Nhận xét của bạn..." %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Đánh giá", class: "button-background" %>
+  </div>
+<% end %>
+
