@@ -19,4 +19,12 @@ class Post < ApplicationRecord
   def ofTutor?
     brand == "Gia Sư Tìm Trò"
   end
+
+  def address
+    if ofTutor?
+      tutor.address
+    else
+      student.address
+    end
+  end
 end

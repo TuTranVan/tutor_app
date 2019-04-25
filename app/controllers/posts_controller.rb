@@ -3,6 +3,20 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.newest.open
+    if params[:search]
+      if params[:search][:subject_id] != ""
+        @posts = @posts.where subject_id: params[:search][:subject_id]
+      end
+      if params[:search][:level] != ""
+        @posts = @posts.where level: params[:search][:level]
+      end
+      if params[:search][:brand] != ""
+        @posts = @posts.where brand: params[:search][:brand]
+      end
+      if params[:search][:address] != ""
+        @posts = @posts.select{ |p| p.address == params[:search][:address]}
+      end
+    end
   end
 
   def new
