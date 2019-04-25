@@ -34,6 +34,18 @@ module SessionsHelper
     Subject.all.map{|s| [s.name, s.id]}
   end
 
+  def select_brand
+    Post.all.map{|s| [s.brand, s.brand]}.uniq
+  end
+
+  def select_address_tutor
+    Tutor.all.map{|s| [s.address, s.address]}.uniq
+  end
+
+  def select_address_student
+    Student.all.map{|s| [s.address, s.address]}.uniq
+  end
+
   def select_rating
     [
       ["1 sao","1"],

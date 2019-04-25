@@ -1,0 +1,31 @@
+<%= form_for(:search, url: posts_path, :html => { :method => "GET" }) do |f| %>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <%= f.select(:address, (select_address_tutor + select_address_student).uniq,
+          {:include_blank => "Địa chỉ"}, {class: "form-control"}) %>
+      </div>
+
+      <div class="col-md-3 form-group">
+        <%= f.select(:subject_id, select_subject,
+          {:include_blank => "Môn học"}, {class: "form-control"}) %>
+      </div>
+
+      <div class="col-md-3 form-group">
+        <%= f.select(:level, options_for_student,
+          {:include_blank => "Trình độ"}, {class: "form-control"}) %>
+      </div>
+
+      <div class="col-md-3 form-group">
+        <%= f.select(:brand, select_brand,
+          {:include_blank => "Hình thức"}, {class: "form-control"}) %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="col-md-12 form-group">
+      <%= f.submit "Tìm kiếm",class: "button-background" %>
+    </div>
+  </div>
+<% end %>
+

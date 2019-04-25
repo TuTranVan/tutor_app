@@ -3,6 +3,20 @@ class TutorsController < ApplicationController
 
   def index
     @tutors = Tutor.newest
+    if params[:search]
+      if params[:search][:address] != ""
+        @tutors = @tutors.where address: params[:search][:address]
+      end
+      if params[:search][:gender] != ""
+        @tutors = @tutors.where gender: params[:search][:gender]
+      end
+      if params[:search][:literacy] != ""
+        @tutors = @tutors.where literacy: params[:search][:literacy]
+      end
+      if params[:search][:subject] != ""
+        @tutors = @tutors.select{ |t| t.ofMajor?(params[:search][:subject]) == true}
+      end
+    end
   end
 
   def new
