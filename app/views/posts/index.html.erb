@@ -5,5 +5,17 @@
   <%= render "search" %>
 </div>
 <div class="row">
+  <% if params[:search] %>
+    <div class="col-md-12">
+      <p><i>Có <%= @posts.count %> lớp
+        <%= params[:search][:address] != "" ? "ở #{params[:search][:address]}" : "" %>
+        <%= params[:search][:subject_id] != "" ? "- #{Subject.find(params[:search][:subject_id]).name}" : "" %>
+        <%= params[:search][:level] != "" ? "- #{params[:search][:level]}" : "" %>
+        <%= params[:search][:brand] != "" ? "[#{params[:search][:brand]}]" : "" %>
+      </i></p><br>
+    </div>
+  <% end %>
+</div>
+<div class="row">
   <%= render @posts %>
 </div>

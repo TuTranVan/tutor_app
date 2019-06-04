@@ -70,16 +70,20 @@ class PostsController < ApplicationController
   def register
     if @post.ofTutor?
       if current_user.tutor? || current_user.admin?
-        redirect_to current_user
+        flash[:danger] = "Bạn không thể đăng ký học lớp này"
+        redirect_to @post
       else
         @post.update_attributes status: 1, student_id: current_user.student.id
+        flash[:success] = "Đăng ký thành công, chờ phê duyệt...!"
         redirect_to current_user
       end
     else
       if current_user.student? || current_user.admin?
-        redirect_to current_user
+        flash[:danger] = "Bạn không thể đăng ký dạy lớp này"
+        redirect_to @post
       else
         @post.update_attributes status: 1, tutor_id: current_user.tutor.id
+        flash[:success] = "Đăng ký thành công, chờ phê duyệt...!"
         redirect_to current_user
       end
     end

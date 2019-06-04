@@ -35,4 +35,8 @@ class Tutor < ApplicationRecord
     end
     return false
   end
+
+  def select_subject
+    subjects.all.map{|s| [s.name, s.id]}
+  end
 end

@@ -5,5 +5,17 @@
   <%= render "search" %>
 </div>
 <div class="row">
+  <% if params[:search] %>
+    <div class="col-md-12">
+      <p><i>Có <%= @tutors.count %> gia sư
+        <%= params[:search][:address] != "" ? "ở #{params[:search][:address]}" : "" %>
+        <%= params[:search][:gender] != "" ? "- #{params[:search][:gender]}" : "" %>
+        <%= params[:search][:subject] != "" ? "- #{Subject.find(params[:search][:subject]).name}" : "" %>
+        <%= params[:search][:literacy] != "" ? "- #{params[:search][:literacy]}" : "" %>
+      </i></p><br>
+    </div>
+  <% end %>
+</div>
+<div class="row">
   <%= render @tutors %>
 </div>
